@@ -13,7 +13,7 @@ public class SearchSteps {
 	WebDriver driver;
 	@Given("the user is in the index page")
 	public void theUserIsInIndexPage() {
-		System.setProperty("webdriver.FireFox.driver", "Drivers/geckodriver.exe");
+		System.setProperty("webdriver.gecko.driver", "Drivers/geckodriver.exe");
 		driver = new FirefoxDriver();
 		driver.navigate().to("http://automationpractice.com/index.php");
 	}
@@ -30,9 +30,6 @@ public class SearchSteps {
 	
 	@Then("the dresses page appears")
 	public void dressesPage() {
-		String title = driver.findElement(By.className("lighter")).getText();
-		Assert.assertEquals("\"DRESSES\"", title);
-		driver.close();
-		driver.quit();
+		Assert.assertEquals(driver.findElement(By.className("lighter")).getText(), "\"DRESSES\"");
 	}
 }
